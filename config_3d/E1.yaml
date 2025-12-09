@@ -24,7 +24,7 @@ model:
 
 training:
   objective: reconstruction_only
-  batch_size: 256
+  batch_size: 64
   epochs: 100
   optimizer: adam
   lr: 1e-3

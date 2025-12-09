@@ -88,16 +88,19 @@ class Shapes3DDataset(Dataset):
             import h5py
         except ImportError:
             raise ImportError("h5py is required for 3D Shapes dataset. Install with: pip install h5py")
-        
-        with h5py.File(path, 'r') as f:
-            self.imgs = f['images'][:]  # (N, 64, 64, 3)
-            self.latents_values = f['labels'][:]  # (N, 6) continuous values
-            # Convert continuous values to discrete classes for compatibility
-            self.latents_classes = self._values_to_classes(self.latents_values)
+
+        # Keep the file handle open on the dataset object
+        self.path = path
+        self.file = h5py.File(path, "r")          # ✅ no 'with' here
+        self.imgs_ds = self.file["images"]        # h5py Dataset (lazy, not loaded)
+        self.latents_values = self.file["labels"][:]  # small enough to keep in RAM
+
+        # Convert continuous values to discrete classes for compatibility
+        self.latents_classes = self._values_to_classes(self.latents_values)
 
         # Split train/test deterministically
         np.random.seed(random_seed)
-        n_samples = len(self.imgs)
+        n_samples = self.imgs_ds.shape[0]
         indices = np.random.permutation(n_samples)
         split_idx = int(n_samples * split_ratio)
 
@@ -107,7 +110,7 @@ class Shapes3DDataset(Dataset):
             self.indices = indices[split_idx:]
 
         self.transform = T.Compose([
-            T.Lambda(lambda x: torch.tensor(x, dtype=torch.float32).permute(2, 0, 1) / 255.0)  # HWC -> CHW, normalize
+            T.Lambda(lambda x: torch.tensor(x, dtype=torch.float32).permute(2, 0, 1) / 255.0)
         ])
 
     def _values_to_classes(self, values):
@@ -115,7 +118,6 @@ class Shapes3DDataset(Dataset):
         classes = np.zeros_like(values, dtype=np.int64)
         for i in range(values.shape[1]):
             unique_vals = np.unique(values[:, i])
-            # Map each value to its index in unique_vals
             classes[:, i] = np.searchsorted(unique_vals, values[:, i])
         return classes
 
@@ -124,23 +126,35 @@ class Shapes3DDataset(Dataset):
 
     def __getitem__(self, idx):
         real_idx = self.indices[idx]
-        img = self.imgs[real_idx]  # (64, 64, 3)
+
+        # ✅ Load just this sample from disk
+        img = self.imgs_ds[real_idx]  # (64, 64, 3) uint8
 
         if self.transform:
             img = self.transform(img)
         else:
             img = torch.tensor(img, dtype=torch.float32).permute(2, 0, 1) / 255.0
 
-        # Return both continuous values and discrete classes
         latent_values = torch.tensor(self.latents_values[real_idx], dtype=torch.float32)
         latent_classes = torch.tensor(self.latents_classes[real_idx], dtype=torch.long)
 
         return img, {"values": latent_values, "classes": latent_classes}
 
+    def __del__(self):
+        # Cleanly close the file when the dataset is destroyed
+        if hasattr(self, "file") and self.file is not None:
+            try:
+                self.file.close()
+            except Exception:
+                pass
+
 
 def get_shapes3d_loader(batch_size: int, train: bool = True, path: str = "./data/3dshapes.h5", num_workers: int = 2):
     dataset = Shapes3DDataset(path=path, train=train)
-    return DataLoader(dataset, batch_size=batch_size, shuffle=train, drop_last=False, num_workers=num_workers)
+    # h5py + multiple workers can be tricky; 0 or 1 is safest
+    return DataLoader(dataset, batch_size=batch_size, shuffle=train,
+                      drop_last=False, num_workers=num_workers)
+
 
 
 # --------------------------
@@ -240,36 +254,37 @@ def build_model(cfg, pretrained_encoder=None):
     depth = cfg["model"].get("depth", 4)
     freeze_encoder = cfg["model"].get("freeze_encoder", False)
     input_size = cfg["data"].get("input_size", 64) if "data" in cfg else 64
-    input_channels = cfg["data"].get("input_channels", 1) if "data" in cfg else 1
+    input_channels = cfg["data"].get("in_channels", 3) if "data" in cfg else 1
+    output_channels = cfg["data"].get("output_channels", 3) if "data" in cfg else 1
 
     if mtype == "autoencoder":
-        return Autoencoder(latent_dim=latent_dim)
+        return Autoencoder(latent_dim=latent_dim,input_channels=input_channels,output_channels=output_channels)
     elif mtype in ["classifier", "classification"]:
-        return Classifier(latent_dim=latent_dim, num_classes=num_classes, input_size=input_size, input_channels=input_channels)
+        return Classifier(latent_dim=latent_dim, num_classes=num_classes, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["multi_task", "multitask"]:
         num_reg = cfg["model"].get("num_reg", 2)
-        return MultiTaskAE(latent_dim=latent_dim, num_classes=num_classes, num_reg=num_reg, input_size=input_size, input_channels=input_channels)
+        return MultiTaskAE(latent_dim=latent_dim, num_classes=num_classes, num_reg=num_reg, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["regularized", "regularizedae"]:
         reg_type = cfg["model"].get("reg_type", "l1")
-        return RegularizedAE(latent_dim=latent_dim, num_classes=num_classes, reg_type=reg_type, input_size=input_size, input_channels=input_channels)
+        return RegularizedAE(latent_dim=latent_dim, num_classes=num_classes, reg_type=reg_type, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["branched", "branchedae"]:
         num_subspaces = cfg["model"].get("num_subspaces", 2)
-        return BranchedAE(latent_dim=latent_dim, num_classes=num_classes, num_subspaces=num_subspaces, input_size=input_size, input_channels=input_channels)
+        return BranchedAE(latent_dim=latent_dim, num_classes=num_classes, num_subspaces=num_subspaces, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["taskfactorized", "task_factorized"]:
         num_reg = cfg["model"].get("num_reg", 2)
-        return TaskFactorizedAE(latent_dim=latent_dim, num_classes=num_classes, num_reg=num_reg, input_size=input_size, input_channels=input_channels)
+        return TaskFactorizedAE(latent_dim=latent_dim, num_classes=num_classes, num_reg=num_reg, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["scaled", "scaledae"]:
         width_multiplier = cfg["model"].get("width_multiplier", 1)
         depth = cfg["model"].get("depth", 4)
         input_size = cfg["data"].get("input_size", 64) if "data" in cfg else 64
         return ScaledAE(latent_dim=latent_dim, num_classes=num_classes,
-                        width_multiplier=width_multiplier, depth=depth, input_size=input_size, input_channels=input_channels)
+                        width_multiplier=width_multiplier, depth=depth, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["transfer", "transferae"]:
         return TransferAE(latent_dim=latent_dim, num_classes=num_classes,
-                         freeze_encoder=freeze_encoder, pretrained_encoder=pretrained_encoder, input_size=input_size, input_channels=input_channels)
+                         freeze_encoder=freeze_encoder, pretrained_encoder=pretrained_encoder, input_size=input_size, input_channels=input_channels, output_channels=output_channels)
     elif mtype in ["moe", "mixture_of_experts"]:
         num_experts = cfg["model"].get("num_experts", 3)
-        return MoEBranchedAE(latent_dim=latent_dim, num_classes=num_classes, num_experts=num_experts, input_size=input_size, input_channels=input_channels)
+        return MoEBranchedAE(latent_dim=latent_dim, num_classes=num_classes, num_experts=num_experts, input_size=input_size, input_channels=input_channels, output_channels=output_channels )
 
     raise ValueError(f"Unknown model type: {mtype}")
 
@@ -609,7 +624,7 @@ def run(config_path: str, data_path: str = "./data/dsprites.npz"):
     # Data loaders - detect dataset type
     batch_size = cfg.get("training", {}).get("batch_size", 128)
     # num_workers = cfg.get("training", {}).get("num_workers", 1)
-    num_workers = 1
+    num_workers = 0
     dataset_type = get_dataset_type(data_path)
     
     if dataset_type == 'shapes3d':

@@ -1,0 +1,31 @@
+data:
+  dataset: shapes3d
+  factors:
+    class:
+      floor_hue: 10
+      object_hue: 10
+      scale: 8
+      shape: 4
+      wall_hue: 10
+    reg:
+    - orientation
+  in_channels: 3
+  input_size: 64
+  output_channels: 3
+  root: ./data/shapes3d
+experiment: E1_shapes3d_autoencoder
+model:
+  latent_dim: 32
+  type: autoencoder
+training:
+  batch_size: 64
+  epochs: 100
+  loss_weights:
+    cls: 0.0
+    recon: 1.0
+    reg: 0.0
+  lr: 1e-3
+  objective: reconstruction_only
+  optimizer: adam
+  seed: 0
+  weight_decay: 0.0
