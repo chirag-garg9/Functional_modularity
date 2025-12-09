@@ -1,0 +1,20 @@
+experiment_id: E7
+model:
+  type: transfer
+  latent_dim: 10
+  num_classes: 3
+  freeze_encoder: False
+  pretrained_path: D:\minor project\checkpoints\pretrained_encoder_fmnist_latent10.pth
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 50
+  batch_size: 128
+  use_reconstruction: true
+loss:
+  weights:
+    recon: 1.0
+    class: 0.0
+logging:
+  save_interval: 25

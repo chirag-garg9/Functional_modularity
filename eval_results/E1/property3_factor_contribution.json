@@ -1,0 +1,87 @@
+{
+  "baseline_multitask_test": {
+    "shape_acc": 0.9986029863357544,
+    "shape_ce": 0.004480958916246891,
+    "cont_mse": 0.6430150270462036,
+    "cont_mse_per_dim": [
+      0.003950674552470446,
+      2.56044864654541,
+      0.004007082898169756,
+      0.003653952619060874
+    ]
+  },
+  "factored_multitask_test": {
+    "shape_acc": 0.9978434443473816,
+    "shape_ce": 0.005728858057409525,
+    "cont_mse": 0.6155204772949219,
+    "cont_mse_per_dim": [
+      0.0038102411199361086,
+      2.4487314224243164,
+      0.005066314246505499,
+      0.004474246874451637
+    ]
+  },
+  "recovery": {
+    "shape_acc_ratio": 0.9992393954366591,
+    "cont_mse_ratio": 1.0446687815685909
+  },
+  "drop_expert_contribution_matrix": {
+    "shape": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.6453993320465088,
+      "pos_y": 0.6519639790058136
+    },
+    "scale": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1761808544397354,
+      "pos_y": 0.16760678589344025
+    },
+    "rot": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1761808544397354,
+      "pos_y": 0.16760678589344025
+    },
+    "pos_x": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1761808544397354,
+      "pos_y": 0.16760678589344025
+    },
+    "pos_y": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1761808544397354,
+      "pos_y": 0.16760678589344025
+    }
+  },
+  "factor_contribution_scores": {
+    "shape": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "scale": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "rot": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "pos_x": {
+      "self_contribution": 0.1761808544397354,
+      "leakage_mean": 0.29348547384142876
+    },
+    "pos_y": {
+      "self_contribution": 0.16760678589344025,
+      "leakage_mean": 0.2886960841715336
+    }
+  }
+}

@@ -1,0 +1,20 @@
+experiment_id: E4
+model:
+  type: branched
+  latent_dim: 10
+  num_classes: 3
+  num_subspaces: 2
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 15
+  batch_size: 128
+  class_target: shape
+  use_reconstruction: true
+loss:
+  weights:
+    recon: 1.0
+    class: 0.0
+logging:
+  save_interval: 10

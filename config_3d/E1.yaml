@@ -1,0 +1,36 @@
+# configs/e1_shapes3d_autoencoder.yaml
+
+experiment: E1_shapes3d_autoencoder
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3          # RGB
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation       # int in [0, 14], you normalize to [0,1] in loader
+
+model:
+  type: autoencoder
+  latent_dim: 32
+
+training:
+  objective: reconstruction_only
+  batch_size: 256
+  epochs: 100
+  optimizer: adam
+  lr: 1e-3
+  weight_decay: 0.0
+  loss_weights:
+    recon: 1.0
+    cls: 0.0
+    reg: 0.0
+  seed: 0

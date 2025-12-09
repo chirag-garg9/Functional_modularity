@@ -1,0 +1,59 @@
+{
+  "P1": {
+    "shape": {
+      "own_perf": 0.9999864366319444,
+      "comp_perf": 0.4606797960069444,
+      "rand_perf_mean": 0.99986572265625,
+      "rand_perf_std": 0.0005760445007857212,
+      "delta_own_vs_comp": 0.539306640625,
+      "delta_own_vs_rand": 0.00012071397569446418,
+      "p_value_own_gt_rand": 0.9,
+      "factor_type": "categorical"
+    },
+    "scale": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "rot": {
+      "own_perf": 0.18024462631076776,
+      "comp_perf": 0.07907085107783696,
+      "rand_perf_mean": 0.09540295250197871,
+      "rand_perf_std": 0.044138014478276234,
+      "delta_own_vs_comp": 0.10117377523293081,
+      "delta_own_vs_rand": 0.08484167380878906,
+      "p_value_own_gt_rand": 0.0,
+      "factor_type": "continuous"
+    },
+    "pos_x": {
+      "own_perf": 0.15016746045717688,
+      "comp_perf": 0.6540922080032103,
+      "rand_perf_mean": 0.03637040370239054,
+      "rand_perf_std": 0.05880831534032203,
+      "delta_own_vs_comp": -0.5039247475460334,
+      "delta_own_vs_rand": 0.11379705675478635,
+      "p_value_own_gt_rand": 0.2,
+      "factor_type": "continuous"
+    },
+    "pos_y": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    }
+  },
+  "P2_modularity_score": 0.4200982251817912,
+  "P3_recovery": {
+    "shape_acc_ratio": 1.0,
+    "cont_mse_ratio": 1.0180605553621944
+  },
+  "P4_overall_LA_localized": 0.1825784753359035,
+  "P4_overall_LA_unconstrained": 0.18959233951098703
+}

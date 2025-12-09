@@ -1,0 +1,52 @@
+{
+  "selective_encoding_per_factor": {
+    "shape": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "scale": {
+      "own_perf": 0.5942147021802733,
+      "comp_perf": 0.1586914273735902,
+      "rand_perf_mean": 0.19403861582696066,
+      "rand_perf_std": 0.21247280555351947,
+      "delta_own_vs_comp": 0.43552327480668307,
+      "delta_own_vs_rand": 0.4001760863533126,
+      "p_value_own_gt_rand": 0.0,
+      "factor_type": "continuous"
+    },
+    "rot": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "pos_x": {
+      "own_perf": 0.3376207941267353,
+      "comp_perf": 0.1801161294152026,
+      "rand_perf_mean": 0.25290213742131884,
+      "rand_perf_std": 0.13466959642255602,
+      "delta_own_vs_comp": 0.15750466471153268,
+      "delta_own_vs_rand": 0.08471865670541645,
+      "p_value_own_gt_rand": 0.35,
+      "factor_type": "continuous"
+    },
+    "pos_y": {
+      "own_perf": 0.37604898597846914,
+      "comp_perf": 0.2650166391821519,
+      "rand_perf_mean": 0.19447708487502724,
+      "rand_perf_std": 0.07056252447548741,
+      "delta_own_vs_comp": 0.11103234679631724,
+      "delta_own_vs_rand": 0.1815719011034419,
+      "p_value_own_gt_rand": 0.0,
+      "factor_type": "continuous"
+    }
+  }
+}

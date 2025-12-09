@@ -1,0 +1,20 @@
+experiment_id: E6
+model:
+  type: scaled
+  latent_dim: 10
+  num_classes: 3
+  width_multiplier: 2
+  depth: 4
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 50
+  batch_size: 128
+  use_reconstruction: true
+loss:
+  weights:
+    recon: 1.0
+    class: 0.0
+logging:
+  save_interval: 10

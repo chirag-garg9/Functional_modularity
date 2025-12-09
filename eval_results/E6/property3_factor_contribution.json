@@ -1,0 +1,87 @@
+{
+  "baseline_multitask_test": {
+    "shape_acc": 0.9976264238357544,
+    "shape_ce": 0.006618639454245567,
+    "cont_mse": 0.6508958339691162,
+    "cont_mse_per_dim": [
+      0.003578687785193324,
+      2.5844833850860596,
+      0.008646560832858086,
+      0.006874922197312117
+    ]
+  },
+  "factored_multitask_test": {
+    "shape_acc": 0.9976264238357544,
+    "shape_ce": 0.0068870773538947105,
+    "cont_mse": 0.6250104308128357,
+    "cont_mse_per_dim": [
+      0.0033957127016037703,
+      2.488018751144409,
+      0.004134285729378462,
+      0.0044930786825716496
+    ]
+  },
+  "recovery": {
+    "shape_acc_ratio": 1.0,
+    "cont_mse_ratio": 1.041415953846748
+  },
+  "drop_expert_contribution_matrix": {
+    "shape": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.6743299663066864,
+      "pos_y": 0.6348741352558136
+    },
+    "scale": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.18045733869075775,
+      "pos_y": 0.14840932190418243
+    },
+    "rot": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.18045733869075775,
+      "pos_y": 0.14840932190418243
+    },
+    "pos_x": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.18045733869075775,
+      "pos_y": 0.14840932190418243
+    },
+    "pos_y": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.18045733869075775,
+      "pos_y": 0.14840932190418243
+    }
+  },
+  "factor_contribution_scores": {
+    "shape": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "scale": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "rot": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "pos_x": {
+      "self_contribution": 0.18045733869075775,
+      "leakage_mean": 0.3039254955947399
+    },
+    "pos_y": {
+      "self_contribution": 0.14840932190418243,
+      "leakage_mean": 0.2700255252420902
+    }
+  }
+}

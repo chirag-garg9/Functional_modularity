@@ -1,0 +1,56 @@
+# configs/e2_shapes3d_multitask.yaml
+
+experiment: E2_shapes3d_multitask
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation
+
+model:
+  type: multi_task
+  latent_dim: 32
+
+  # factor-aware multi-head setup
+  class_factors:
+    shape: 4
+    scale: 8
+    object_hue: 10
+    wall_hue: 10
+    floor_hue: 10
+
+  reg_factors:
+    - orientation
+
+  input_channels: 3
+  output_channels: 3
+  input_size: 64
+
+  hidden_cls: 64
+  hidden_reg: 64
+  dropout_cls: 0.3
+  dropout_reg: 0.3
+
+training:
+  objective: recon_plus_multitask
+  batch_size: 256
+  epochs: 120
+  optimizer: adam
+  lr: 1e-3
+  weight_decay: 1e-5
+  loss_weights:
+    recon: 1.0
+    cls: 1.0
+    reg: 1.0
+  seed: 0

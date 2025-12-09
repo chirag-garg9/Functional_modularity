@@ -1,0 +1,87 @@
+{
+  "baseline_multitask_test": {
+    "shape_acc": 0.9992268681526184,
+    "shape_ce": 0.002619576407596469,
+    "cont_mse": 0.6208527684211731,
+    "cont_mse_per_dim": [
+      0.0031967710237950087,
+      2.4702775478363037,
+      0.004953020252287388,
+      0.004983855877071619
+    ]
+  },
+  "factored_multitask_test": {
+    "shape_acc": 0.9991590976715088,
+    "shape_ce": 0.0025590015575289726,
+    "cont_mse": 0.6115244626998901,
+    "cont_mse_per_dim": [
+      0.003734038909897208,
+      2.434032440185547,
+      0.0039033442735671997,
+      0.004428216256201267
+    ]
+  },
+  "recovery": {
+    "shape_acc_ratio": 0.9999321770828331,
+    "cont_mse_ratio": 1.0152541824412034
+  },
+  "drop_expert_contribution_matrix": {
+    "shape": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.6360677182674408,
+      "pos_y": 0.645317941904068
+    },
+    "scale": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1292998343706131,
+      "pos_y": 0.2060164362192154
+    },
+    "rot": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1292998343706131,
+      "pos_y": 0.2060164362192154
+    },
+    "pos_x": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1292998343706131,
+      "pos_y": 0.2060164362192154
+    },
+    "pos_y": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.1292998343706131,
+      "pos_y": 0.2060164362192154
+    }
+  },
+  "factor_contribution_scores": {
+    "shape": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "scale": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "rot": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "pos_x": {
+      "self_contribution": 0.1292998343706131,
+      "leakage_mean": 0.25599180534482
+    },
+    "pos_y": {
+      "self_contribution": 0.2060164362192154,
+      "leakage_mean": 0.31584181264042854
+    }
+  }
+}

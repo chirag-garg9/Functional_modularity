@@ -1,0 +1,22 @@
+experiment_id: E3
+model:
+  type: regularized
+  latent_dim: 10
+  num_classes: 3
+  reg_type: l2
+regularization:
+  weight: 0.01
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 50
+  batch_size: 128
+  class_target: shape
+  use_reconstruction: true
+loss:
+  weights:
+    recon: 1.0
+    class: 0.0
+logging:
+  save_interval: 10

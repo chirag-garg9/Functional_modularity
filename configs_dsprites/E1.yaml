@@ -1,0 +1,15 @@
+experiment_id: E1
+model:
+  type: autoencoder
+  latent_dim: 10
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 50
+  batch_size: 128
+loss:
+  weights:
+    recon: 1.0
+logging:
+  save_interval: 25

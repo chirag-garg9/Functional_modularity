@@ -1,0 +1,87 @@
+{
+  "baseline_multitask_test": {
+    "shape_acc": 0.9977620244026184,
+    "shape_ce": 0.006672963500022888,
+    "cont_mse": 0.6331998109817505,
+    "cont_mse_per_dim": [
+      0.003962875343859196,
+      2.5212242603302,
+      0.0037187442649155855,
+      0.003893196117132902
+    ]
+  },
+  "factored_multitask_test": {
+    "shape_acc": 0.99755859375,
+    "shape_ce": 0.007020744029432535,
+    "cont_mse": 0.618752658367157,
+    "cont_mse_per_dim": [
+      0.004175208043307066,
+      2.460740566253662,
+      0.005094574298709631,
+      0.005000112112611532
+    ]
+  },
+  "recovery": {
+    "shape_acc_ratio": 0.9997961130533705,
+    "cont_mse_ratio": 1.023348833203753
+  },
+  "drop_expert_contribution_matrix": {
+    "shape": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.6641031801700592,
+      "pos_y": 0.6603732705116272
+    },
+    "scale": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.2123301923274994,
+      "pos_y": 0.10441017150878906
+    },
+    "rot": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.2123301923274994,
+      "pos_y": 0.10441017150878906
+    },
+    "pos_x": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.2123301923274994,
+      "pos_y": 0.10441017150878906
+    },
+    "pos_y": {
+      "shape": 0.0,
+      "scale": 0.0,
+      "rot": 0.0,
+      "pos_x": 0.2123301923274994,
+      "pos_y": 0.10441017150878906
+    }
+  },
+  "factor_contribution_scores": {
+    "shape": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "scale": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "rot": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "pos_x": {
+      "self_contribution": 0.2123301923274994,
+      "leakage_mean": 0.32527343928813934
+    },
+    "pos_y": {
+      "self_contribution": 0.10441017150878906,
+      "leakage_mean": 0.2434009462594986
+    }
+  }
+}

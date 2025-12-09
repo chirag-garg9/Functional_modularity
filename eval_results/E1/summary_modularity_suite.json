@@ -1,0 +1,58 @@
+{
+  "P1": {
+    "shape": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "scale": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "rot": {
+      "own_perf": null,
+      "comp_perf": null,
+      "rand_perf_mean": null,
+      "rand_perf_std": null,
+      "delta_own_vs_comp": 0.0,
+      "delta_own_vs_rand": 0.0,
+      "p_value_own_gt_rand": 1.0
+    },
+    "pos_x": {
+      "own_perf": 0.579369079732401,
+      "comp_perf": 0.12181901588039135,
+      "rand_perf_mean": 0.35144458875798545,
+      "rand_perf_std": 0.17992519803676849,
+      "delta_own_vs_comp": 0.4575500638520097,
+      "delta_own_vs_rand": 0.22792449097441558,
+      "p_value_own_gt_rand": 0.0,
+      "factor_type": "continuous"
+    },
+    "pos_y": {
+      "own_perf": 0.5747329269557522,
+      "comp_perf": 0.07759274903234781,
+      "rand_perf_mean": 0.3796576433759271,
+      "rand_perf_std": 0.21135634906916298,
+      "delta_own_vs_comp": 0.49714017792340437,
+      "delta_own_vs_rand": 0.19507528357982507,
+      "p_value_own_gt_rand": 0.4,
+      "factor_type": "continuous"
+    }
+  },
+  "P2_modularity_score": 0.7639761388540188,
+  "P3_recovery": {
+    "shape_acc_ratio": 0.9992393954366591,
+    "cont_mse_ratio": 1.0446687815685909
+  },
+  "P4_overall_LA_localized": 0.18489879890826946,
+  "P4_overall_LA_unconstrained": 0.1854432802368648
+}

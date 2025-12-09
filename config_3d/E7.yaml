@@ -1,0 +1,40 @@
+# configs/e7_shapes3d_transfer.yaml
+
+experiment: E7_shapes3d_transfer
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation
+
+model:
+  type: transfer
+  latent_dim: 32
+
+  freeze_encoder: true
+  pretrained_path: ./checkpoints/e1_dsprites_autoencoder.pt
+  input_size: 64
+
+training:
+  objective: reconstruction_only_ft_decoder
+  batch_size: 256
+  epochs: 80
+  optimizer: adam
+  lr: 5e-4          # often smaller for transfer
+  weight_decay: 0.0
+  loss_weights:
+    recon: 1.0
+    cls: 0.0
+    reg: 0.0
+  seed: 0

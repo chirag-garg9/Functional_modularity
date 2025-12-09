@@ -1,0 +1,39 @@
+# configs/e6_shapes3d_scaled_small.yaml
+
+experiment: E6_shapes3d_scaled_small
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation
+
+model:
+  type: scaled
+  latent_dim: 32
+  width_multiplier: 0.5   # smaller convs
+  depth: 4                # 4 downsamples -> 4x4 feature map
+  input_size: 64
+
+training:
+  objective: reconstruction_only
+  batch_size: 256
+  epochs: 100
+  optimizer: adam
+  lr: 1e-3
+  weight_decay: 0.0
+  loss_weights:
+    recon: 1.0
+    cls: 0.0
+    reg: 0.0
+  seed: 0

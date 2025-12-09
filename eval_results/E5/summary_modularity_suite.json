@@ -1,0 +1,61 @@
+{
+  "P1": {
+    "shape": {
+      "own_perf": 0.9995524088541666,
+      "comp_perf": 0.3937174479166667,
+      "rand_perf_mean": 0.6354878743489583,
+      "rand_perf_std": 0.18325994676801985,
+      "delta_own_vs_comp": 0.6058349609375,
+      "delta_own_vs_rand": 0.36406453450520837,
+      "p_value_own_gt_rand": 0.05,
+      "factor_type": "categorical"
+    },
+    "scale": {
+      "own_perf": 0.9439243836291897,
+      "comp_perf": 0.07131951834317507,
+      "rand_perf_mean": 0.10499939229331275,
+      "rand_perf_std": 0.2798502326113726,
+      "delta_own_vs_comp": 0.8726048652860147,
+      "delta_own_vs_rand": 0.838924991335877,
+      "p_value_own_gt_rand": 0.1,
+      "factor_type": "continuous"
+    },
+    "rot": {
+      "own_perf": 0.7495484930275995,
+      "comp_perf": 0.2957209956643979,
+      "rand_perf_mean": 0.05138841556043461,
+      "rand_perf_std": 0.17030903255403368,
+      "delta_own_vs_comp": 0.4538274973632016,
+      "delta_own_vs_rand": 0.6981600774671649,
+      "p_value_own_gt_rand": 0.05,
+      "factor_type": "continuous"
+    },
+    "pos_x": {
+      "own_perf": 0.6945171866823989,
+      "comp_perf": 0.12863338543815628,
+      "rand_perf_mean": 0.3846562137954309,
+      "rand_perf_std": 0.20555829729257488,
+      "delta_own_vs_comp": 0.5658838012442426,
+      "delta_own_vs_rand": 0.309860972886968,
+      "p_value_own_gt_rand": 0.0,
+      "factor_type": "continuous"
+    },
+    "pos_y": {
+      "own_perf": 0.57342616758822,
+      "comp_perf": 0.2857065911443104,
+      "rand_perf_mean": 0.11901138183123727,
+      "rand_perf_std": 0.1952637599438142,
+      "delta_own_vs_comp": 0.28771957644390955,
+      "delta_own_vs_rand": 0.4544147857569827,
+      "p_value_own_gt_rand": 0.15,
+      "factor_type": "continuous"
+    }
+  },
+  "P2_modularity_score": 0.9889361733231534,
+  "P3_recovery": {
+    "shape_acc_ratio": 1.0,
+    "cont_mse_ratio": 1.0340734058250995
+  },
+  "P4_overall_LA_localized": 0.19329387233684348,
+  "P4_overall_LA_unconstrained": 0.19276733087936432
+}

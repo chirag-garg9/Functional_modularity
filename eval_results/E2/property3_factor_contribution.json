@@ -1,0 +1,87 @@
+{
+  "baseline_multitask_test": {
+    "shape_acc": 1.0,
+    "shape_ce": 3.283306796220131e-05,
+    "cont_mse": 0.22686773538589478,
+    "cont_mse_per_dim": [
+      0.0031176817137748003,
+      0.8965744376182556,
+      0.003398575121536851,
+      0.004380273167043924
+    ]
+  },
+  "factored_multitask_test": {
+    "shape_acc": 1.0,
+    "shape_ce": 2.48027135967277e-05,
+    "cont_mse": 0.22284306585788727,
+    "cont_mse_per_dim": [
+      0.0038177967071533203,
+      0.8799619674682617,
+      0.0033179866150021553,
+      0.004274467471987009
+    ]
+  },
+  "recovery": {
+    "shape_acc_ratio": 1.0,
+    "cont_mse_ratio": 1.0180605553621944
+  },
+  "drop_expert_contribution_matrix": {
+    "shape": {
+      "shape": 0.667236328125,
+      "scale": 0.0,
+      "rot": 0.0009358525276184082,
+      "pos_x": 0.001220703125,
+      "pos_y": 0.0
+    },
+    "scale": {
+      "shape": 0.08041825518012047,
+      "scale": 0.0,
+      "rot": 0.2157994769513607,
+      "pos_x": 0.21976878866553307,
+      "pos_y": 0.0
+    },
+    "rot": {
+      "shape": 0.08041825518012047,
+      "scale": 0.0,
+      "rot": 0.2157994769513607,
+      "pos_x": 0.21976878866553307,
+      "pos_y": 0.0
+    },
+    "pos_x": {
+      "shape": 0.08041825518012047,
+      "scale": 0.0,
+      "rot": 0.2157994769513607,
+      "pos_x": 0.21976878866553307,
+      "pos_y": 0.0
+    },
+    "pos_y": {
+      "shape": 0.08041825518012047,
+      "scale": 0.0,
+      "rot": 0.2157994769513607,
+      "pos_x": 0.21976878866553307,
+      "pos_y": 0.0
+    }
+  },
+  "factor_contribution_scores": {
+    "shape": {
+      "self_contribution": 0.667236328125,
+      "leakage_mean": 0.08041825518012047
+    },
+    "scale": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    },
+    "rot": {
+      "self_contribution": 0.2157994769513607,
+      "leakage_mean": 0.16208357084542513
+    },
+    "pos_x": {
+      "self_contribution": 0.21976878866553307,
+      "leakage_mean": 0.1651317672803998
+    },
+    "pos_y": {
+      "self_contribution": 0.0,
+      "leakage_mean": 0.0
+    }
+  }
+}

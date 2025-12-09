@@ -1,0 +1,57 @@
+# configs/e5_shapes3d_taskfactorized.yaml
+
+experiment: E5_shapes3d_taskfactorized
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation
+
+model:
+  type: taskfactorized
+  latent_dim: 32
+
+  # same factor sets as E2
+  class_factors:
+    shape: 4
+    scale: 8
+    object_hue: 10
+    wall_hue: 10
+    floor_hue: 10
+
+  reg_factors:
+    - orientation
+
+  shared_ratio: 0.25   # 25% shared, 75% split into class/private + reg/private
+  private_ratio: 0.75  # (used conceptually; actual split derived in code)
+
+  input_size: 64
+  input_channels: 3
+  output_channels: 3
+
+  hidden_cls: 64
+  hidden_reg: 64
+
+training:
+  objective: recon_plus_multitask
+  batch_size: 256
+  epochs: 120
+  optimizer: adam
+  lr: 1e-3
+  weight_decay: 1e-5
+  loss_weights:
+    recon: 1.0
+    cls: 1.0
+    reg: 1.0
+  seed: 0

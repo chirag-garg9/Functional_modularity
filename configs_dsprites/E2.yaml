@@ -1,0 +1,22 @@
+experiment_id: E2
+model:
+  type: multi_task
+  latent_dim: 10
+  num_classes: 3
+  num_reg: 2
+optimizer:
+  type: adam
+  lr: 0.001
+training:
+  epochs: 50
+  batch_size: 128
+  class_target: shape
+  reg_target: [scale, orientation]
+  use_reconstruction: true
+loss:
+  weights:
+    recon: 1.0
+    class: 1.0
+    reg: 0.5
+logging:
+  save_interval: 25

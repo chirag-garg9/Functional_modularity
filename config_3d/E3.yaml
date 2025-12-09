@@ -1,0 +1,38 @@
+# configs/e3_shapes3d_regularized_tc.yaml
+
+experiment: E3_shapes3d_regularized_tc
+
+data:
+  dataset: shapes3d
+  root: ./data/shapes3d
+  input_size: 64
+  in_channels: 3
+  output_channels: 3
+  factors:
+    class:
+      shape: 4
+      scale: 8
+      object_hue: 10
+      wall_hue: 10
+      floor_hue: 10
+    reg:
+      - orientation
+
+model:
+  type: regularized
+  latent_dim: 32
+  reg_type: l2        # alternatives: l1, l2, orthogonal, sparsity, variance
+
+training:
+  objective: recon_plus_latent_reg
+  batch_size: 256
+  epochs: 100
+  optimizer: adam
+  lr: 1e-3
+  weight_decay: 0.0
+  loss_weights:
+    recon: 1.0
+    latent_reg: 1e-3  # lambda_TC
+    cls: 0.0
+    reg: 0.0
+  seed: 0
